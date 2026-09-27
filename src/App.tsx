@@ -40,16 +40,34 @@ function MoveMap({exerciseId,name}:{exerciseId:string;name:string}){const map:an
 function Pose({kind,end}:{kind:string;end:boolean}){let body;if(kind==="knee"){body=<><rect className="mmProp" x="20" y="80" width="65" height="8"/><line className="mmFixed" x1="55" y1="42" x2="55" y2="82"/><circle className="mmHead" cx="55" cy="28" r="10"/><line className="mmFixed" x1="55" y1="82" x2="88" y2="85"/><line className="mmMove" x1="88" y1="85" x2={end?128:90} y2={end?85:125}/><ellipse className="mmTarget" cx="80" cy="83" rx="16" ry="8"/>{end&&<path className="mmPath" d="M94 119 Q118 108 128 88"/>}</>};if(kind==="w"){body=<><rect className="mmProp" x="22" y="84" width="66" height="8"/><circle className="mmHead" cx="56" cy="28" r="10"/><line className="mmFixed" x1="56" y1="42" x2="56" y2="84"/><line className="mmMove" x1="55" y1="52" x2={end?39:29} y2={end?61:48}/><line className="mmMove" x1={end?39:29} y1={end?61:48} x2={end?36:21} y2={end?38:29}/><line className="mmMove" x1="57" y1="52" x2={end?73:83} y2={end?61:48}/><line className="mmMove" x1={end?73:83} y1={end?61:48} x2={end?76:91} y2={end?38:29}/><ellipse className="mmTarget" cx="56" cy="58" rx="15" ry="12"/>{end&&<><path className="mmPath" d="M29 53 Q35 59 42 61"/><path className="mmPath" d="M83 53 Q77 59 70 61"/></>}</>};if(kind==="bridge"){body=<><line className="mmFloor" x1="12" y1="115" x2="138" y2="115"/><circle className="mmHead" cx="25" cy={end?87:101} r="9"/><line className="mmFixed" x1="34" y1={end?90:103} x2="70" y2={end?81:104}/><line className="mmMove" x1="70" y1={end?81:104} x2="104" y2="102"/><line className="mmFixed" x1="104" y1="102" x2="124" y2="115"/><ellipse className="mmTarget" cx="70" cy={end?82:103} rx="14" ry="8"/>{end&&<path className="mmPath" d="M68 103 Q69 91 71 80"/>}</>};return <svg className="mmSvg" viewBox="0 0 150 145">{body}</svg>}
 function MoveMap({exerciseId,name}:{exerciseId:string;name:string}){const maps:any={c1:{kind:"knee",a:"허벅지 고정",b:"무릎만 천천히"},c9:{kind:"w",a:"어깨는 아래로",b:"날개뼈만 모으기"},b1:{kind:"bridge",a:"발은 바닥에",b:"엉덩이로 들어요"}};const m=maps[exerciseId];if(!m)return <ExerciseGuide exerciseId={exerciseId} name={name}/>;return <div className="moveMap"><div className="mmTitle"><b>동작 한눈에 보기</b><span>연두색 = 힘을 느낄 곳</span></div><div className="mmFrames"><div><small>① 시작</small><Pose kind={m.kind} end={false}/></div><div><small>② 여기까지</small><Pose kind={m.kind} end={true}/></div></div><div className="mmCues"><b>● {m.a}</b><b>● {m.b}</b></div></div>}
 const effects:Record<string,{headline:string;now:string;later:string}>={
-c1:{headline:"🦵 계단과 일어나기를 받치는 허벅지 힘",now:"허벅지 앞쪽 근육을 바로 사용해요.",later:"꾸준히 하면 무릎을 펴는 힘과 앉았다 일어나기·계단 오르기를 받치는 하체 근력 향상에 도움이 돼요."},
-c2:{headline:"🚶 다리를 들어 올리는 힘",now:"고관절과 코어를 가볍게 깨워요.",later:"꾸준히 하면 걷기와 계단에서 다리를 들어 올리는 움직임을 받치는 데 도움이 돼요."},
-c3:{headline:"🍑 앉아서도 엉덩이 깨우기",now:"오래 앉아 쉬고 있던 엉덩이 근육을 수축해요.",later:"반복하면 엉덩이에 힘을 주는 감각과 근육 사용량을 쌓는 데 도움이 돼요."},
+c1:{headline:"🦵 계단과 일어나기를 받치는 허벅지 힘",now:"허벅지 앞쪽 근육을 사용해요.",later:"꾸준히 하면 무릎을 펴는 힘과 앉았다 일어나기·계단 오르기를 받치는 하체 근력에 도움이 돼요."},
+c2:{headline:"🚶 다리를 들어 올리는 힘",now:"고관절과 복부 주변 근육을 사용해요.",later:"꾸준히 하면 걷기와 계단에서 다리를 들어 올리는 움직임을 받치는 데 도움이 돼요."},
+c3:{headline:"🍑 앉아서도 엉덩이 깨우기",now:"엉덩이 근육을 직접 수축해요.",later:"반복하면 엉덩이에 힘을 주는 감각과 근육 사용량을 쌓는 데 도움이 돼요."},
 c4:{headline:"⭕ 몸통을 버티는 코어 힘",now:"복부 주변에 힘을 주며 몸통을 안정시켜요.",later:"꾸준히 하면 일상에서 몸통을 지지하는 코어 근력에 도움이 돼요."},
 c5:{headline:"🦶 걷고 뛰는 힘을 받치는 종아리",now:"종아리 근육을 수축해요.",later:"꾸준히 하면 걷기·달리기·계단에서 발목을 밀어내는 힘을 기르는 데 도움이 돼요."},
 c6:{headline:"👣 발끝을 드는 정강이 힘",now:"정강이 앞쪽 근육을 사용해요.",later:"꾸준히 하면 발끝을 들어 올리는 힘과 발목 주변 근력 유지에 도움이 돼요."},
 c7:{headline:"🍑 골반을 지지하는 엉덩이 옆 힘",now:"엉덩이 옆쪽 근육을 사용해요.",later:"꾸준히 하면 걷거나 한 발로 설 때 골반을 지지하는 근력에 도움이 돼요."},
-c8:{headline:"💪 굽은 상체를 펴는 등·어깨 힘",now:"등 위쪽과 어깨 뒤쪽을 사용해요.",later:"꾸준히 하면 상체를 지지하는 등·어깨 근력과 자세 유지에 도움이 돼요."},
+c8:{headline:"💪 등·어깨 뒤쪽을 쓰는 당기기",now:"등 위쪽과 어깨 뒤쪽 근육을 사용해요.",later:"꾸준히 하면 상체를 지지하고 팔을 뒤로 당기는 근력에 도움이 돼요."},
 c9:{headline:"🪽 날개뼈 주변을 깨우는 1분",now:"등 위쪽과 날개뼈 주변 근육을 사용해요.",later:"꾸준히 하면 상체를 지지하는 등·어깨 근력과 자세 유지 능력에 도움이 돼요."},
-c10:{headline:"🧲 등을 당기는 힘",now:"팔보다 등 가운데를 중심으로 당기는 근육을 써요.",later:"꾸준히 하면 당기기 동작과 상체 지지에 필요한 등 근력에 도움이 돼요."},
-b1:{headline:"🍑 엉덩이와 고관절을 튼튼하게",now:"엉덩이와 허벅지 뒤쪽을 사용해 골반을 들어요.",later:"꾸준히 하면 엉덩이·고관절 주변 근력과 하체 움직임을 받치는 힘에 도움이 돼요."}
+c10:{headline:"🧲 등을 당기는 힘",now:"등 가운데와 팔을 당기는 근육을 사용해요.",later:"꾸준히 하면 당기기 동작과 상체 지지에 필요한 등 근력에 도움이 돼요."},
+b1:{headline:"🍑 엉덩이와 고관절을 튼튼하게",now:"엉덩이와 허벅지 뒤쪽을 사용해 골반을 들어요.",later:"꾸준히 하면 엉덩이·고관절 주변 근력과 하체 움직임을 받치는 힘에 도움이 돼요."},
+b2:{headline:"🦪 골반 옆을 지지하는 엉덩이 힘",now:"엉덩이 옆쪽 근육을 집중해서 사용해요.",later:"꾸준히 하면 걷기·달리기에서 골반과 허벅지를 안정적으로 지지하는 근력에 도움이 돼요."},
+b3:{headline:"🍑 엉덩이 옆쪽을 탄탄하게",now:"다리를 옆으로 드는 엉덩이 근육을 사용해요.",later:"꾸준히 하면 한 발 지지와 옆 방향 움직임을 받치는 엉덩이 근력에 도움이 돼요."},
+b4:{headline:"🍑 누운 채로 엉덩이 깨우기",now:"누운 자세에서 엉덩이 근육을 직접 수축해요.",later:"반복하면 엉덩이에 힘을 주는 감각을 익히고 다음 하체 운동에서 엉덩이를 쓰는 데 도움이 돼요."},
+b5:{headline:"⭕ 누워서 만드는 코어 지지력",now:"호흡을 유지하며 복부 주변을 단단하게 만들어요.",later:"꾸준히 하면 움직일 때 몸통을 안정시키는 코어 근력에 도움이 돼요."},
+b6:{headline:"🧩 다리를 움직여도 몸통은 안정적으로",now:"다리를 움직이는 동안 복부와 골반 주변을 사용해요.",later:"꾸준히 하면 팔다리를 움직일 때 몸통을 안정시키는 능력에 도움이 돼요."},
+b7:{headline:"🪽 누워서 등·어깨 뒤쪽 깨우기",now:"밴드를 벌리며 등 위쪽과 어깨 뒤쪽을 사용해요.",later:"꾸준히 하면 상체를 지지하고 팔을 벌리는 등·어깨 근력에 도움이 돼요."},
+f1:{headline:"🐞 팔·다리가 움직여도 단단한 코어",now:"반대 팔과 다리를 움직이며 복부로 몸통을 잡아요.",later:"꾸준히 하면 팔다리 움직임 중 몸통을 안정시키는 코어 근력에 도움이 돼요."},
+f2:{headline:"🐾 코어와 엉덩이를 함께",now:"코어와 엉덩이로 몸통의 흔들림을 제어해요.",later:"꾸준히 하면 몸통 안정성과 엉덩이 근력을 함께 기르는 데 도움이 돼요."},
+f3:{headline:"💪 가슴·팔로 몸을 미는 힘",now:"가슴과 팔 뒤쪽 근육을 사용해 몸을 밀어요.",later:"꾸준히 하면 밀기 동작에 필요한 상체 근력을 기르는 데 도움이 돼요."},
+f4:{headline:"🍑 옆 엉덩이 근력 쌓기",now:"엉덩이 옆쪽을 사용해 다리를 들어요.",later:"꾸준히 하면 골반을 지지하고 옆 방향 움직임을 받치는 근력에 도움이 돼요."},
+s1:{headline:"🦶 걷기와 달리기의 마지막 밀어내기",now:"체중을 지지하며 종아리 근육을 사용해요.",later:"꾸준히 하면 걷기·달리기·계단에서 발목을 밀어내는 종아리 근력에 도움이 돼요."},
+s2:{headline:"🪑 일어나고 앉는 하체 힘",now:"허벅지와 엉덩이를 함께 사용해요.",later:"꾸준히 하면 의자에서 일어나기와 계단 같은 일상 동작을 받치는 하체 근력에 도움이 돼요."},
+s3:{headline:"🧱 부담 낮게 시작하는 미는 힘",now:"가슴·어깨·팔을 사용해 벽을 밀어요.",later:"꾸준히 하면 일상적인 밀기 동작에 필요한 상체 근력을 기르는 데 도움이 돼요."},
+s4:{headline:"💪 한 단계 더 강한 상체 밀기",now:"가슴·어깨·팔과 몸통을 함께 사용해요.",later:"꾸준히 하면 푸시업으로 이어지는 상체 밀기 근력과 몸통 지지력에 도움이 돼요."},
+s5:{headline:"🍑 뒤로 차는 엉덩이 힘",now:"다리를 뒤로 보내며 엉덩이 근육을 사용해요.",later:"꾸준히 하면 걷기·달리기에서 다리를 뒤로 미는 고관절 근력에 도움이 돼요."},
+s6:{headline:"🍑 옆으로 버티는 엉덩이 힘",now:"다리를 옆으로 들며 엉덩이 옆쪽을 사용해요.",later:"꾸준히 하면 한 발로 설 때 골반을 지지하는 근력에 도움이 돼요."},
+s7:{headline:"🪽 벽에서 만드는 등·어깨 지지력",now:"등 위쪽과 어깨 주변을 사용하며 팔을 움직여요.",later:"꾸준히 하면 팔을 올릴 때 필요한 어깨 주변 근력과 상체 자세 유지에 도움이 돼요."},
+s8:{headline:"🪽 굳은 상체에 작은 리셋",now:"날개뼈 주변과 등 위쪽 근육을 가볍게 수축해요.",later:"꾸준히 하면 상체를 지지하는 등 근력과 어깨 위치를 유지하는 능력에 도움이 돼요."}
 };
 function EffectCard({exerciseId,muscles}:{exerciseId:string;muscles:string[]}){const e=effects[exerciseId]||{headline:"🌱 오늘의 작은 근력 저축",now:`${muscles.join(" · ")} 근육을 짧게 사용해요.`,later:"꾸준히 반복하고 조금씩 강도를 높이면 해당 부위의 근력을 기르는 데 도움이 돼요."};return <div className="effectCard"><div className="effectTitle">이 운동을 하면?</div><h3>{e.headline}</h3><div><small>지금</small><p>{e.now}</p></div><div><small>쌓이면</small><p>{e.later}</p></div></div>}
