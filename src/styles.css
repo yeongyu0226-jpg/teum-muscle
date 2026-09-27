@@ -24,3 +24,16 @@
 .largeText .effectTitle{font-size:16px}.largeText .effectCard h3{font-size:21px}.largeText .effectCard p{font-size:17px}.largeText .effectCard small{font-size:14px}
 .largeText .barrow{grid-template-columns:82px 1fr 30px;font-size:16px}.largeText .statsHead button,.largeText .back{font-size:17px;min-height:44px}
 .largeText .historyRow b{font-size:17px}.largeText .historyRow small,.largeText .historyRow strong,.largeText .emptyRecord{font-size:15px}
+
+/* Extra-large accessibility tuning */
+.largeText{font-size:22px}
+.largeText header b{font-size:32px}.largeText header span{font-size:18px;line-height:1.45}
+.largeText h2{font-size:23px}.largeText .hero p,.largeText .hero strong{font-size:21px}.largeText .hero small,.largeText .work small{font-size:17px}
+.largeText .grid button,.largeText .times button,.largeText select{font-size:21px;min-height:62px}
+.largeText .instant,.largeText .primary,.largeText .lazy,.largeText .done{font-size:22px;min-height:64px}
+.largeText .work h1{font-size:40px;line-height:1.2}.largeText .pill{font-size:18px}.largeText .work p{font-size:20px;line-height:1.7}
+.largeText .dose{font-size:46px}.largeText .timer{font-size:66px}
+.largeText .guideTitle{font-size:19px}.largeText .guideFrame small{font-size:16px}.largeText .guideFrame strong{font-size:20px}.largeText .guideMove{font-size:19px}.largeText .guideTip,.largeText .guideAvoid{font-size:18px;line-height:1.65}
+.largeText .effectTitle{font-size:18px}.largeText .effectCard h3{font-size:24px}.largeText .effectCard p{font-size:19px;line-height:1.65}.largeText .effectCard small{font-size:16px}
+.largeText .barrow{grid-template-columns:90px 1fr 34px;font-size:18px}.largeText .statsHead button,.largeText .back{font-size:19px}
+.largeText .historyRow b{font-size:19px}.largeText .historyRow small,.largeText .historyRow strong,.largeText .emptyRecord{font-size:17px}
